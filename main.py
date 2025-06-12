@@ -4,6 +4,11 @@ from typing import List, Optional
 
 app = FastAPI()
 
+# ✅ Root endpoint to check server status
+@app.get("/")
+def read_root():
+    return {"message": "TDS Virtual TA is running!"}
+
 # Define request body
 class Question(BaseModel):
     question: str
@@ -36,4 +41,3 @@ def get_answer(q: Question):
             "answer": "I am not sure about that. Please check the Discourse forum.",
             "links": []
         }
-
