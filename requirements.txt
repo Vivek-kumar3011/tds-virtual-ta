@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+pydantic
+python-multipart
+beautifulsoup4   # (if your scraper.py uses BeautifulSoup)
+requests         # (for HTTP requests in scraper.py)
