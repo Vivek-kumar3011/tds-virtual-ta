@@ -29,20 +29,40 @@ def get_answer(q: Question):
     # Dummy Logic — replace with your scraped data processing or simple if-else
     if "docker" in question_text or "podman" in question_text:
         return {
-            "answer": "It's recommended to use Podman, but Docker is acceptable.",
+            "answer": "Podman is recommended for the course, but Docker is also acceptable.",
             "links": [
-                {"url": "https://tds.s-anand.net/#/docker", "text": "Docker vs Podman discussion"}
+                {"url": "https://tds.s-anand.net/#/docker", "text": "Docker vs Podman guidance"}
             ]
         }
 
+    # Exam deadline / date related query
     elif "deadline" in question_text or "exam date" in question_text or "end term" in question_text:
         return {
-            "answer": "The End-Term exam is scheduled for 31st August 2025.",
+            "answer": "Sorry, the deadline date for the exam is not available yet based on the context provided.",
+            "links": [{"url": "https://study.iitm.ac.in/ds/", "text": "IITM BS Study Portal"}]
+        }
+
+    # GPT model question clarification (GA5)
+    elif "gpt-3.5" in question_text or "gpt-4o-mini" in question_text or "gpt4" in question_text or "gpt3" in question_text:
+        return {
+            "answer": "Clarifies use of gpt-3.5-turbo-0125 is not possible; use gpt-4o-mini instead.",
             "links": [
-                {"url": "https://study.iitm.ac.in/ds/", "text": "IITM BS Study Portal"}
+                {"url": "https://discourse.onlinedegree.iitm.ac.in/t/ga5-question-8-clarification/155939", 
+                 "text": "GA5 Question 8 Clarification"}
             ]
         }
 
+    # GA4 Dashboard marks display question
+    elif "ga4" in question_text and "dashboard" in question_text:
+        return {
+            "answer": "If you score 10/10 plus a bonus, your dashboard will display 110.",
+            "links": [
+                {"url": "https://discourse.onlinedegree.iitm.ac.in/t/ga4-data-sourcing-discussion-thread-tds-jan-2025/165959",
+                 "text": "GA4 Discussion Thread"}
+            ]
+        }
+
+    # Discourse / Forum related query
     elif "discourse" in question_text or "forum" in question_text:
         return {
             "answer": "You can post your doubts or find discussions on the course Discourse Forum.",
@@ -51,6 +71,7 @@ def get_answer(q: Question):
             ]
         }
 
+    # Course portal related query
     elif "course portal" in question_text or "study portal" in question_text:
         return {
             "answer": "Visit the IITM BS Study Portal for course materials and updates.",
@@ -59,6 +80,7 @@ def get_answer(q: Question):
             ]
         }
 
+    # Default response for unrecognized questions
     else:
         return {
             "answer": "I'm not sure about that. Please check the course Discourse forum or Study Portal for more information.",
