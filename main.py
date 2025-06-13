@@ -38,7 +38,9 @@ def get_answer(q: Question):
     elif "deadline" in question_text or "exam date" in question_text or "end term" in question_text:
         return {
             "answer": "The End-Term exam is scheduled for 31st August 2025.",
-            "links": []
+            "links": [
+                {"url": "https://study.iitm.ac.in/ds/", "text": "IITM BS Study Portal"}
+            ]
         }
 
     elif "discourse" in question_text or "forum" in question_text:
